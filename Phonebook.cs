@@ -53,6 +53,8 @@ namespace Phonebook
 
             // Read into buffer
             var offset = 0;
+
+            // This buffer is costly for _every_ record reaching out to Disk would not be. Break into 4KB chunks?
             while ((offset += file.Read(buffer, offset, Record_SizeInBytes)) < file.Length)
             {
                 var raw = Encoding.UTF8.GetString(buffer);
